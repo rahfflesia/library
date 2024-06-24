@@ -46,7 +46,7 @@ button {
     cursor: pointer;
 }
 
-.black{
+.black, .remove, .submit-btn{
     background-color: black;
     color: white;
 }
@@ -84,4 +84,59 @@ main {
 .text {
     font-size: 1.4rem;
     font-weight: 500;
+}
+
+/* Dialog Styles */
+dialog {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25%;
+}
+
+input {
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #fff;
+    background-color: black;
+    border-radius: 5px;
+    padding: 7px 12px;
+}
+
+.form-title {
+    margin-bottom: 20px;
+}
+
+.radios {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.submit-btn {
+    margin-bottom: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.form-title {
+    font-size: 2.7rem;
+    font-weight: bold;
+}
+
+.close {
+    background-color: rgb(193, 58, 58);
+    color: white;
+}
+
+label {
+    font-size: 1.6rem;
 }
