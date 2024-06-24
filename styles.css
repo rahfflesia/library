@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Quicksand:wght@300..700&display=swap');
+:root {
+    font-size: 62.5%;
+    font-family: "Outfit", sans-serif;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    font-size: 2.3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.links {
+    font-size: 1.6rem;
+    display: flex;
+    gap: 40px;
+}
+
+.links p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons, .title{
+    min-width: 200px;
+}
+
+button {
+    font-size: 1.8rem;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-family: "Outfit", sans-serif;
+    cursor: pointer;
+}
+
+.black{
+    background-color: black;
+    color: white;
+}
+
+.white {
+    background-color: #fff;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 25px;
+    margin: 30px;
+}
+
+.book-card {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.book-card p{
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
