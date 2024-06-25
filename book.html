@@ -11,16 +11,16 @@
     <dialog>
         <form action="" method="dialog">
             <p class="form-title">Add new book</p>
-            <input type="text" name="title" id="title" placeholder="Title">
-            <input type="text" name="author" id="author" placeholder="Author">
-            <input type="number" name="pages" id="pages" placeholder="Number of pages">
+            <input type="text" name="title" id="title" placeholder="Title" required>
+            <input type="text" name="author" id="author" placeholder="Author" required>
+            <input type="number" name="pages" id="pages" placeholder="Number of pages" required>
             <div class="radios">
                 <div class="opt">
-                    <input type="radio" name="state" id="read" value="Read">
+                    <input type="radio" name="state" id="read" value="Read" required>
                     <label for="read">Read</label>
                 </div>
                 <div class="opt">
-                    <input type="radio" name="state" id="unread" value="Unread">
+                    <input type="radio" name="state" id="unread" value="Unread" required>
                     <label for="unread">Unread</label>
                 </div>
             </div>
@@ -43,50 +43,7 @@
     </header>
     <main>
         <div class="cards">
-            <div class="book-card">
-                <p class="title">Title</p>
-                <p class="text">The Hobbit</p>
-                <p class="title">Author</p>
-                <p class="text">Tolkien</p>
-                <p class="title">Number of pages</p>
-                <p class="text">295</p>
-                <p class="title">State</p>
-                <p class="text">Read</p>
-                <button class="remove">Remove</button>
-            </div>
-            <div class="book-card">
-                <p class="title">Title</p>
-                <p class="text">1984</p>
-                <p class="title">Author</p>
-                <p class="text">George Orwell</p>
-                <p class="title">Number of pages</p>
-                <p class="text">328</p>
-                <p class="title">State</p>
-                <p class="text">Unread</p>
-                <button class="remove">Remove</button>
-            </div>
-            <div class="book-card">
-                <p class="title">Title</p>
-                <p class="text">Pride and Prejudice</p>
-                <p class="title">Author</p>
-                <p class="text">Jane Austen</p>
-                <p class="title">Number of pages</p>
-                <p class="text">279</p>
-                <p class="title">State</p>
-                <p class="text">Read</p>
-                <button class="remove">Remove</button>
-            </div>
-            <div class="book-card">
-                <p class="title">Title</p>
-                <p class="text">The Great Gatsby</p>
-                <p class="title">Author</p>
-                <p class="text">F. Scott Fitzgerald</p>
-                <p class="title">Number of pages</p>
-                <p class="text">180</p>
-                <p class="title">State</p>
-                <p class="text">Read</p>
-                <button class="remove">Remove</button>
-            </div>
+            
         </div>
     </main>
 </body>
