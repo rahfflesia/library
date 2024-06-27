@@ -93,12 +93,16 @@ function addBookToLibrary() {
     let changeStatus = document.querySelector('#status');
 
     changeBookStatus.addEventListener('click' , () => {
-        changeBookStatus.textContent === "Read" ? changeStatus.textContent = "Unread" : changeStatus.textContent = "Read";
+        if(changeStatus.textContent === "Read"){
+            changeStatus.textContent = "Unread";
+        }
+        else{
+            changeStatus.textContent = "Read";
+        }
     });
 
     const bookList = document.querySelectorAll('.book-card');
 
     deleteBook.addEventListener('click', () => {
-        
     });
 }
