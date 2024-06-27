@@ -12,14 +12,13 @@ const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 const pages = document.querySelector('#pages');
 
-// Nodelist of the cards
-const bookCards = document.querySelectorAll('.book-card');
-
 // Parent container
 const parentDiv = document.querySelector('.cards');
 
-
 showDialog.addEventListener('click', () => {
+    titleInput.value = "";
+    authorInput.value = "";
+    pages.value = "";
     dialog.showModal();
 });
 
@@ -33,57 +32,73 @@ addBook.addEventListener('click', () => {
 });
 
 // Book constructor
-function Book(title, author, numberOfPages, state){
+function Book(title, author, numberOfPages, state, index) {
     this.title = title;
     this.author = author;
     this.numberOfPages = numberOfPages;
     this.state = state;
+    this.index = index;
 }
 
-function addBookToLibrary(){
+let bookIndex = 0;
+function addBookToLibrary() {
     let checkedRadio = "";
     let readOption = document.querySelector('#read');
     let unreadOption = document.querySelector('#unread');
 
-    if(readOption.checked){
+    if (readOption.checked) {
         checkedRadio = readOption.value;
-    }
-    else if(unreadOption.checked){
+    } else if (unreadOption.checked) {
         checkedRadio = unreadOption.value;
     }
 
-
-    let newBook = new Book(titleInput.value, authorInput.value, pages.value, checkedRadio);
+    let newBook = new Book(titleInput.value, authorInput.value, pages.value, checkedRadio, bookIndex++);
     myLibrary.push(newBook);
-    titles = ["Title", "Author", "Pages", "State"]
+
+    titles = ["Title", "Author", "Pages", "Status"];
     let div = document.createElement('div');
-    let button = document.createElement('button');
     div.classList.add('book-card');
-    button.classList.add('black');
-    button.textContent = "Remove";
-    let pointer = 0;
-    for(let i = 0; i <= 7; i++){
-        const paragraph = document.createElement('p');
-        if(i % 2 === 0){
-            paragraph.classList.add('title');
-            paragraph.textContent = titles[pointer];
-            pointer++;
+
+    for (let i = 0; i < titles.length; i++) {
+        const titleParagraph = document.createElement('p');
+        titleParagraph.classList.add('title');
+        titleParagraph.textContent = titles[i];
+        div.appendChild(titleParagraph);
+
+        const textParagraph = document.createElement('p');
+        textParagraph.classList.add('text');
+        textParagraph.textContent = Object.values(newBook)[i];
+        div.appendChild(textParagraph);
+
+        if(i == titles.length - 1){
+            textParagraph.id = "status";
         }
-        else{
-            paragraph.classList.add('text');
-        }
-        div.appendChild(paragraph);
-        div.appendChild(button);
     }
+
+    const button = document.createElement('button');
+    const editButton = document.createElement('button');
+    button.textContent = 'Delete';
+    button.classList.add('black');
+    button.style.marginRight = "10px";
+    editButton.textContent = 'Change Status';
+    editButton.classList.add('black');
+    div.appendChild(button);
+    div.appendChild(editButton);
+    editButton.id = "edit";
+    button.id = "delete";
     parentDiv.appendChild(div);
 
-    const nodeList = document.querySelectorAll('.book-card .text');
-    for(let i = 0; i <= nodeList.length - 1; i++){
-        let values = Object.values(myLibrary[i]);
-        for(let j = 0; j <= values.length - 1; j++){
-            nodeList[j].textContent = values[j];
-        }
-    }
+    let changeBookStatus = document.querySelector('#edit');
+    let deleteBook = document.querySelector('#delete');
+    let changeStatus = document.querySelector('#status');
+
+    changeBookStatus.addEventListener('click' , () => {
+        changeBookStatus.textContent === "Read" ? changeStatus.textContent = "Unread" : changeStatus.textContent = "Read";
+    });
+
+    const bookList = document.querySelectorAll('.book-card');
+
+    deleteBook.addEventListener('click', () => {
+        
+    });
 }
-
-
