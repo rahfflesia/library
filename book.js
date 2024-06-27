@@ -86,6 +86,7 @@ function addBookToLibrary() {
     div.appendChild(editButton);
     editButton.id = "edit";
     button.id = "delete";
+    button.onclick = deleteNode;
     parentDiv.appendChild(div);
 
     let changeBookStatus = document.querySelector('#edit');
@@ -100,9 +101,8 @@ function addBookToLibrary() {
             changeStatus.textContent = "Read";
         }
     });
+}
 
-    const bookList = document.querySelectorAll('.book-card');
-
-    deleteBook.addEventListener('click', () => {
-    });
+function deleteNode(){
+    this.parentNode.remove();
 }
