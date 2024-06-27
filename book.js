@@ -90,7 +90,6 @@ function addBookToLibrary() {
     parentDiv.appendChild(div);
 
     let changeBookStatus = document.querySelector('#edit');
-    let deleteBook = document.querySelector('#delete');
     let changeStatus = document.querySelector('#status');
 
     changeBookStatus.addEventListener('click' , () => {
