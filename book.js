@@ -1,6 +1,6 @@
 // Array to store the books
 const myLibrary = [];
-
+let bookIndex = 0;
 // Buttons
 const showDialog = document.querySelector('.black');
 const dialog = document.querySelector('dialog');
@@ -28,78 +28,80 @@ closeButton.addEventListener('click', () => {
 
 // Button to add book to the library
 addBook.addEventListener('click', () => {
-    addBookToLibrary();
+    Library.addBookToLibrary();
 });
 
-// Book constructor
-function Book(title, author, numberOfPages, state, index) {
-    this.title = title;
-    this.author = author;
-    this.numberOfPages = numberOfPages;
-    this.state = state;
-    this.index = index;
+class Book {
+    constructor(title, author, numberOfPages, state, index){
+        this.title = title;
+        this.author = author;
+        this.numberOfPages = numberOfPages;
+        this.state = state;
+        this.index = index;
+    }
 }
 
-let bookIndex = 0;
-function addBookToLibrary() {
-    let checkedRadio = "";
-    let readOption = document.querySelector('#read');
-    let unreadOption = document.querySelector('#unread');
+class Library {
+    static addBookToLibrary(){
+        let checkedRadio = "";
+        let readOption = document.querySelector('#read');
+        let unreadOption = document.querySelector('#unread');
 
-    if (readOption.checked) {
-        checkedRadio = readOption.value;
-    } else if (unreadOption.checked) {
-        checkedRadio = unreadOption.value;
+        if (readOption.checked) {
+            checkedRadio = readOption.value;
+        } else if (unreadOption.checked) {
+            checkedRadio = unreadOption.value;
+        }
+
+        let newBook = new Book(titleInput.value, authorInput.value, pages.value, checkedRadio, bookIndex++);
+        myLibrary.push(newBook);
+
+        const titles = ["Title", "Author", "Pages", "Status"];
+        let div = document.createElement('div');
+        div.classList.add('book-card');
+
+        for (let i = 0; i < titles.length; i++) {
+            const titleParagraph = document.createElement('p');
+            titleParagraph.classList.add('title');
+            titleParagraph.textContent = titles[i];
+            div.appendChild(titleParagraph);
+
+            const textParagraph = document.createElement('p');
+            textParagraph.classList.add('text');
+            textParagraph.textContent = Object.values(newBook)[i];
+            div.appendChild(textParagraph);
+
+            if(i == titles.length - 1){
+                textParagraph.id = "status";
+            }
+        }
+
+        const button = document.createElement('button');
+        const editButton = document.createElement('button');
+        button.textContent = 'Delete';
+        button.classList.add('black');
+        button.style.marginRight = "10px";
+        editButton.textContent = 'Change Status';
+        editButton.classList.add('black');
+        div.appendChild(button);
+        div.appendChild(editButton);
+        editButton.id = "edit";
+        button.id = "delete";
+        button.onclick = deleteNode;
+        parentDiv.appendChild(div);
+
+        let changeBookStatus = document.querySelector('#edit');
+        let changeStatus = document.querySelector('#status');
+
+        changeBookStatus.addEventListener('click' , () => {
+            if(changeStatus.textContent === "Read"){
+                changeStatus.textContent = "Unread";
+            }
+            else{
+                changeStatus.textContent = "Read";
+            }
+        });
     }
-
-    let newBook = new Book(titleInput.value, authorInput.value, pages.value, checkedRadio, bookIndex++);
-    myLibrary.push(newBook);
-
-    titles = ["Title", "Author", "Pages", "Status"];
-    let div = document.createElement('div');
-    div.classList.add('book-card');
-
-    for (let i = 0; i < titles.length; i++) {
-        const titleParagraph = document.createElement('p');
-        titleParagraph.classList.add('title');
-        titleParagraph.textContent = titles[i];
-        div.appendChild(titleParagraph);
-
-        const textParagraph = document.createElement('p');
-        textParagraph.classList.add('text');
-        textParagraph.textContent = Object.values(newBook)[i];
-        div.appendChild(textParagraph);
-
-        if(i == titles.length - 1){
-            textParagraph.id = "status";
-        }
-    }
-
-    const button = document.createElement('button');
-    const editButton = document.createElement('button');
-    button.textContent = 'Delete';
-    button.classList.add('black');
-    button.style.marginRight = "10px";
-    editButton.textContent = 'Change Status';
-    editButton.classList.add('black');
-    div.appendChild(button);
-    div.appendChild(editButton);
-    editButton.id = "edit";
-    button.id = "delete";
-    button.onclick = deleteNode;
-    parentDiv.appendChild(div);
-
-    let changeBookStatus = document.querySelector('#edit');
-    let changeStatus = document.querySelector('#status');
-
-    changeBookStatus.addEventListener('click' , () => {
-        if(changeStatus.textContent === "Read"){
-            changeStatus.textContent = "Unread";
-        }
-        else{
-            changeStatus.textContent = "Read";
-        }
-    });
 }
 
 function deleteNode(){
